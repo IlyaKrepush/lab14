@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Register page{% endblock %}
+{% block content %}
+<div class="flex-center">
+    <div style="margin:30px;background-color:white;border-radius:10px;width:80%;">
+        <div class="form">
+            <form class="form-horizontal" role="form" method="POST">
+                <div class="form-group">
+                    <div class="form-group" style="padding:15px;padding-bottom:0px;font-family:cursive">
+                        <div class="col-sm-10" style="width:100%;">
+                            <div>
+                                <div>
+                                    {% for field, errors in form.errors.items() %}
+                                    {{ ', '.join(errors) }}
+                                    {% endfor %}
+                                </div>
+
+                            </div>
+                            <div>
+                                {{ form.csrf_token() }}
+                                 {% if email_error == True %}
+                                <h5 style="margin-bottom:0px;">This email already exists</h5>
+                                {% endif %}
+                                <input style="margin:3px;width:100%;" id="email" maxlength="120" name="email" required
+                                       type="text" placeholder="email">
+                            </div>
+
+                            <div>
+                                {% if login_error == True %}
+                                <h5 style="margin-bottom:0px;">This login already exists or This email already exists</h5>
+                                {% endif %}
+
+                                {{ form.csrf_token() }}
+                                <input style="margin:3px;width:100%;" id="username" maxlength="64" name="username"
+                                       required
+                                       type="text" placeholder="login">
+                            </div>
+
+                            <div>
+                                {{ form.csrf_token() }}
+                                <input style="margin:3px;width:100%;" id="password" name="password" required type="text"
+                                       placeholder="password">
+                            </div>
+                            <div>
+                                {{ form.csrf_token() }}
+                                <input style="margin:3px;width:100%;" id="password_confired" name="password_confired"
+                                       required
+                                       type="text" placeholder="confired_password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-diver">
+                        <div class="form-group" style="padding:5px;">
+                            <div class="col-sm-offset-2 col-sm-10" style="padding-left:15px;font-family:cursive;">
+                                {{ form.csrf_token() }}
+                                <button type="submit" class="btn btn-success">Enter</button>
+                                <div class="form-group" style="padding:5px;width:40px; margin:auto;">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div>
+</div>
+
+{% endblock %}

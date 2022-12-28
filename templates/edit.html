@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Edit page{% endblock %}
+{% block content %}
+{% if admin_confider == True %}
+        <div class="container" style="background-color:white; margin-top:2rem;padding-bottom:2rem;padding-top:2rem;border-radius:24px;">
+            <div class="container" style="margin:auto;width:16rem;font-family:cursive;">
+                <h2>Edit the product</h2>
+            </div>
+            {% for field, errors in form.errors.items() %}
+            {{ ', '.join(errors) }}
+            {% endfor %}
+            <form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
+                <div class="form-group" style="margin-top:4px;margin-bottom:4px;">
+                    {{ form.csrf_token() }}
+                    <input class="form-control" id="name" name="name" type="text" value="" placeholder="Name">
+                </div>
+                <div class="form-group" style="margin-top:4px;margin-bottom:4px;">
+                    {{ form.csrf_token() }}
+                    <input class="form-control" id="manufacturer" name="manufacturer" type="text" value="" placeholder="Company">
+                </div>
+                <div class="form-group" style="margin-top:4px;margin-bottom:4px;">
+                    {{ form.csrf_token() }}
+                    <input class="form-control" id="price" name="price" type="number" value="" placeholder="Price">
+                </div>
+                <div class="form-group" style="margin-top:4px;margin-bottom:4px;">
+                    {{ form.csrf_token() }}
+                    <input class="form-control" id="type" name="type" type="text" value="" placeholder="Type" >
+                </div>
+                 <div class="form-group" style="margin-top:4px;margin-bottom:4px;">
+                    {{ form.csrf_token() }}
+                    <input class="form-control" id="description" name="description" type="text" value="" placeholder="Description" >
+                </div>
+                <div class="form-group" style="margin-top:4px;margin-bottom:4px;">
+                    {{ form.csrf_token() }}
+                   <input class="form-control" id="photo" name="photo" type="file">
+                </div>
+                <div class="form-group" style="margin-top:10px;padding-left:;" >
+                    <input class="btn btn-warning" id="submit" name="submit" type="submit" value="edit the product"  >
+                </div>
+            </form>
+        </div>
+{% endif %}
+{% endblock %}

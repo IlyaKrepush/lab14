@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for ('static' , filename = 'bootstrap-5.2.1-dist/css/bootstrap.css')}}">
+
+</head>
+<body style="background-color:#FFA07A;">
+
+
+    <div class="container py-3" style="background-color:white;width: 100%;margin-top:10px;border-radius: 24px;">
+        <header>
+            <div class="d-flex flex-md-row" style="margin:5px!important;padding-bottom:0px!important;">
+                <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+                    <span class="fs-3" style="font-family:algerian;">DisAblY</span>
+                </a>
+                <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto" style="">
+                    {% block href %}{% endblock %}
+                </nav>
+            </div>
+        </header>
+        <form class="form-group" >
+            <a href="/filter" class="d-flex align-items-center text-dark text-decoration-none" >
+                <h2>...</h2>
+            </a>
+        </form>
+        {% if main_filter == True%}
+        <form class="form-inline" method="POST">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"></span>
+                    <select name="comp_select" class="selectpicker form-control">
+                        <option value="to-low">По убыванию price</option>
+                        <option value="to-high">По возрастанию price </option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-default">Enter</button>
+            </div>
+        </form>
+        {% endif %}
+    </div>
+
+<main class="flex-wrapper">
+    <div class="container overflow-hidden">
+        <div class="row g-1">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</main>
+</body>

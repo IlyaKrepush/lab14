@@ -1,0 +1,40 @@
+{% extends "base.html" %} 
+{% block title %}Home page{% endblock %} 
+{% block href %} 
+  {% if admin_confider != True and admin_confider != False %}
+    <a class="me-3 py-2 text-dark text-decoration-none" type = "btn btn-primary" href="/login">Войти</a>
+    <a class="me-3 py-2 text-dark text-decoration-none" href="/register">Регистрация</a> 
+  {% endif %}
+  {% if admin_confider == True %}
+    <a style="margin-left: 16px;" class="me-3 py-2 text-dark text-decoration-none" href="/add">Создание товара</a>
+  {% endif %} 
+  {% if  admin_confider == True or admin_confider == False%}
+    <a class="py-2 text-dark text-decoration-none" href="/logout">Выйти</a> 
+  {% endif %} 
+{% endblock %} 
+{% block content %}
+{% for i in products %}
+      <div class="card" style="width: 18rem;margin-left:10px;margin-right:10px;margin-top:1rem;">
+        <div class="container" style="height:370px;display: flex;align-items: center;justify-content: center;">
+          <img class="card-img-top" src="/static/{{i.photo}}" alt="Card image cap">
+        </div>
+        <div class="card-body"> 
+          <h5 class="card-title">{{i.name}}</h5> 
+        </div> 
+        <ul class="list-group list-group-flush"> 
+          <li class="list-group-item">Company: {{i.manufacturer}}</li>
+          <li class="list-group-item">Price: {{i.price}}₽</li>
+        </ul> 
+        <div class="card-body"> 
+          <a href="/{{i.id}}" class="btn btn-primary" class="card-link" style="margin-left:4rem;">Подробнее</a>
+        </div> 
+        {% if admin_confider == True %}
+          <div clas="flex-container" style="height:3rem;"> 
+            <a  href = "/delete/{{i.id}}/Hnecfji2ekdme4efjdk4;gJKJnfkdjne4rfkl;dfj;OIPE(o" class="btn btn-danger" value="" style="margin-left:3rem;">X</a>
+            <a href = "/add/{{i.id}}/ed" class="btn btn-warning" value="">Редактирование</a> 
+          </div> 
+        {% endif %} 
+       </div> 
+{%endfor%}
+{% endblock %}
+      </body>
